@@ -1,14 +1,14 @@
 export default function CounterLetDocumentPage(){
         //js
         function onClickCountUp(){
-            const count = Number(document.getElementById("qqq").innerText) + 1
-            document.getElementById("qqq").innerText = count
+            const count = Number(document.getElementById("qqq").innerText) + 1;
+            document.getElementById("qqq").innerText = count;
             
         }
         
         function onClickCountDown(){
-            const count = Number(document.getElementById("qqq").innerText) - 1
-            document.getElementById("qqq").innerText = count
+            const count = Number(document.getElementById("qqq").innerText) - 1;
+            document.getElementById("qqq").innerText = count;
         }
     return (
         //html
