@@ -1,6 +1,6 @@
 import axios from 'axios'
 // 만들어 놓은 컴포넌트 불러오기
-import CounterStatePage from '../../section02/02-01-counter-state'
+// import CounterStatePage from '../../section02/02-01-counter-state'
 export default function RestGetPage(){
     
     function onClickAsync(){
@@ -37,8 +37,8 @@ export default function RestGetPage(){
             <div>
                 <button onClick={onClickAsync}>REST-API(비동기) 요청하기</button>
                 <button onClick={onClicksync}>REST-API(동기) 요청하기</button>
-                {/* 컴포넌트 추가 */}
-                <CounterStatePage/>
+                {/* 컴포넌트 추가
+                <CounterStatePage/> */}
             </div>
         </div>
     )
