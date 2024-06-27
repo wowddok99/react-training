@@ -23,7 +23,7 @@ export default function RestGetPage(){
     //     console.log(result.data) // 제대로된 결과 출력
     // }
 
-    // 함수 중복 문제 해결 -> 화살표함수(const)
+    // 함수 중복 문제 해결 => 화살표함수(const)
     const onClicksync = async () => {
         const result = await axios.get("https://koreanjson.com/posts/1")
         console.log(result.data) // 제대로된 결과 출력
