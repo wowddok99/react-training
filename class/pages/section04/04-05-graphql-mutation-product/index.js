@@ -1,8 +1,8 @@
 import { useMutation, gql } from "@apollo/client"
 
-const 나의그래프큐엘셋팅 = gql`
-    mutation createBoard($seller: String, $createProductInput: createProductInput!){ # 변수의 타입 적는 곳
-        createBoard(seller: $seller, createProductInput: $createProductInput){ # 실제가 우리가 전달할 변수 적는 곳
+const CREATE_PRODUCT = gql`
+    mutation createProduct($seller: String, $createProductInput: CreateProductInput!){ # 변수의 타입 적는 곳
+        createProduct(seller: $seller, createProductInput: $createProductInput){ # 실제가 우리가 전달할 변수 적는 곳
             _id
             number
             message
@@ -11,10 +11,10 @@ const 나의그래프큐엘셋팅 = gql`
 `
 
 export default function GraphqlMutationPage(){
-    const [나의함수] = useMutation(나의그래프큐엘셋팅);
+    const [createProduct] = useMutation(CREATE_PRODUCT);
 
     const onClickSubmit = async () => {
-        const result = await 나의함수({
+        const result = await createProduct({
             variables: {
                 seller: "훈이",
                 createProductInput:{
