@@ -1,4 +1,4 @@
-import { RedInput, BlueButton } from "./BoardWRite.styles"
+import { RedInput, BlueButton } from "./BoardWrite.styles"
 
 export default function BoardWriteUI(props){
 
