@@ -24,14 +24,32 @@ export default function BoardWrite(){
 
     const onChangeWriter = (event) => {
         setWriter(event.target.value);
+
+        if (event.target.value && title && contents){
+            setIsActive(true);
+        } else {
+            setIsActive(false);
+        }
     }
 
     const onChangeTitle = (event) => {
         setTitle(event.target.value);
+
+        if (writer && event.target.value && contents){
+            setIsActive(true);
+        } else {
+            setIsActive(false);
+        }
     }
 
     const onChangeContents = (event) => {
         setContents(event.target.value);
+
+        if (writer && title && event.target.value){
+            setIsActive(true);
+        } else {
+            setIsActive(false);
+        }
     }
 
     return (
