@@ -16,7 +16,19 @@ export default function MapFruitsPage(){
     // 1. 가장 기본 예제
     const aaa = [<div>1 레드향</div>, <div>2 샤인머스켓</div>, <div>3 산청딸기</div>]
 
+    // 2. 실무 백엔드 데이터 예제
+    const bbb = FRUITS.map(el => <div>{el.number} {el.title}</div>)
+
     return (
-        <div>{aaa}</div>
+        <div>
+            <div>{aaa}</div>
+            <div>==================================</div>
+            <div>{bbb}</div>
+            <div>==================================</div>
+            <div>
+                {/* 3. 실무 효율적인 렌더링 예제 */}
+                {FRUITS.map(el => <div>{el.number} {el.title}</div>)}
+            </div>
+        </div>
     )
 }
