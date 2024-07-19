@@ -1,7 +1,7 @@
 import { useMutation } from "@apollo/client"
 import { useState } from 'react' 
 import BoardWriteUI from "./BoardWrite.presenter";
-import { 나의그래프큐엘셋팅 } from "./BoardWrite.queries";
+import { CREATE_BOARD, UPDATE_BOARD } from "./BoardWrite.queries";
 import { useRouter } from "next/router";
 
 export default function BoardWrite(props){
@@ -10,10 +10,11 @@ export default function BoardWrite(props){
     const [title, setTitle] = useState();
     const [contents, setContents] = useState();
 
-    const [나의함수] = useMutation(나의그래프큐엘셋팅);
+    const [createBoard] = useMutation(CREATE_BOARD);
+    const [updateBoard] = useMutation(UPDATE_BOARD);
 
     const onClickRegister = async () => {
-        const result = await 나의함수({
+        const result = await createBoard({
             variables: {
                 writer: writer, // 우측 변수는 state임
                 title: title,
@@ -27,15 +28,18 @@ export default function BoardWrite(props){
     }
 
     const onClickUpdate = async () => {
-        const result = await 나의함수({
+        const result = await updateBoard({
             variables: {
+                number: Number(router.query.number),
                 writer: writer, // 우측 변수는 state임
                 title: title,
                 contents: contents 
             }
         });
+        console.log(router.query.number);
         console.log("onClickUpdate");
         console.log(result);
+        router.push(`/section09/09-03-boards/${result.data.updateBoard.number}`);
     }
 
     const onChangeWriter = (event) => {
