@@ -4,7 +4,7 @@ export default function BoardsNew(){
     
     return (
         <div>
-            <BoardWrite></BoardWrite>
+            <BoardWrite isEdit={false}></BoardWrite>
         </div>
     ) 
 }

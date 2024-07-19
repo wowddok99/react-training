@@ -2,15 +2,17 @@ import { useMutation } from "@apollo/client"
 import { useState } from 'react' 
 import BoardWriteUI from "./BoardWrite.presenter";
 import { 나의그래프큐엘셋팅 } from "./BoardWrite.queries";
+import { useRouter } from "next/router";
 
-export default function BoardWrite(){
+export default function BoardWrite(props){
+    const router = useRouter();
     const [writer, setWriter] = useState();
     const [title, setTitle] = useState();
     const [contents, setContents] = useState();
 
     const [나의함수] = useMutation(나의그래프큐엘셋팅);
 
-    const onClickSubmit = async () => {
+    const onClickRegister = async () => {
         const result = await 나의함수({
             variables: {
                 writer: writer, // 우측 변수는 state임
@@ -18,6 +20,21 @@ export default function BoardWrite(){
                 contents: contents 
             }
         });
+        console.log("onClickRegister");
+        console.log(result);
+        console.log(result.data.createBoard.number);
+        router.push(`/section09/09-03-boards/${result.data.createBoard.number}`);
+    }
+
+    const onClickUpdate = async () => {
+        const result = await 나의함수({
+            variables: {
+                writer: writer, // 우측 변수는 state임
+                title: title,
+                contents: contents 
+            }
+        });
+        console.log("onClickUpdate");
         console.log(result);
     }
 
@@ -35,14 +52,14 @@ export default function BoardWrite(){
 
     return (
         <div>
-            <div>&&&&&&&&&&& 여기는 컨테이너 입니다 &&&&&&&&&&&</div>
             <BoardWriteUI 
-            aaa={onClickSubmit}
-            bbb={onChangeWriter}
-            ccc={onChangeTitle}
-            ddd={onChangeContents}
+            onClickRegister={onClickRegister}
+            onClickUpdate={onClickUpdate}
+            onChangeWriter={onChangeWriter}
+            onChangeTitle={onChangeTitle}
+            onChangeContents={onChangeContents}
+            isEdit={props.isEdit}
             />
-            <div>&&&&&&&&&&& 여기는 컨테이너 입니다 &&&&&&&&&&&</div>
         </div>
     )
 
