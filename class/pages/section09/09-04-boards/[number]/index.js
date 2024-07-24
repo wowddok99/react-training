@@ -20,7 +20,7 @@ export default function DynamicRoutingBoardMutationMovedPage(){
     });
 
     const onClickMove = () => {
-        router.push(`/section09/09-03-boards/${router.query.number}/edit`);
+        router.push(`/section09/09-04-boards/${router.query.number}/edit`);
     }
 
 

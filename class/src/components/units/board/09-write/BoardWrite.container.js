@@ -36,6 +36,7 @@ export default function BoardWrite(props){
                 contents: contents 
             }
         });
+
         console.log(router.query.number);
         console.log("onClickUpdate");
         console.log(result);
