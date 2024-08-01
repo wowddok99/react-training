@@ -1,7 +1,7 @@
 import { RedInput, BlueButton } from "./BoardWrite.styles"
+import { BoardWriteUIProps } from "./BoardWrite.types"
 
-export default function BoardWriteUI(props){
-
+export default function BoardWriteUI(props: BoardWriteUIProps){
     return (
         <div>
             <div>
@@ -14,5 +14,4 @@ export default function BoardWriteUI(props){
             </div>
         </div>
     )
-
 }

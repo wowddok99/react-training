@@ -3,18 +3,14 @@ import { useState, ChangeEvent } from 'react'
 import BoardWriteUI from "./BoardWrite.presenter";
 import { CREATE_BOARD, UPDATE_BOARD } from "./BoardWrite.queries";
 import { useRouter } from "next/router";
-import { stringify } from "querystring";
+import { BoardWriteProps, boardUpdateInput } from "./BoardWrite.types";
 
-interface BoardWriteProps {
-    isEdit: boolean
-    data?: any
-}
 
 export default function BoardWrite(props: BoardWriteProps){
     const router = useRouter();
     const [writer, setWriter] = useState<string | undefined>(undefined);
-    const [title, setTitle] = useState();
-    const [contents, setContents] = useState();
+    const [title, setTitle] = useState<string | undefined>(undefined);
+    const [contents, setContents] = useState<string | undefined>(undefined);
 
     const [createBoard] = useMutation(CREATE_BOARD);
     const [updateBoard] = useMutation(UPDATE_BOARD);
@@ -34,13 +30,6 @@ export default function BoardWrite(props: BoardWriteProps){
     }
 
     const onClickUpdate = async () => {
-        interface boardUpdateInput {
-            number: number
-            writer?: string
-            title?: string
-            contents?: string
-        }
-
         const boardUpdateInput: boardUpdateInput = {
             number: Number(router.query.number)
         }
@@ -93,11 +82,11 @@ export default function BoardWrite(props: BoardWriteProps){
         setWriter(event.target.value);
     }
 
-    const onInputTitle = (event) => {
+    const onInputTitle = (event: ChangeEvent<HTMLInputElement>) => {
         setTitle(event.target.value);
     }
 
-    const onInputContents = (event) => {
+    const onInputContents = (event: ChangeEvent<HTMLInputElement>) => {
         setContents(event.target.value);
     }
 

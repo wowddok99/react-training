@@ -13,7 +13,7 @@ const FETCH_BOARD = gql`
     }
 `
 
-export default function BoardsEdit(){
+export default function BoardsEditPage(){
     const router = useRouter();
     
     const { data } = useQuery(FETCH_BOARD,{
