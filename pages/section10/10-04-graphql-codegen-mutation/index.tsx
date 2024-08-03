@@ -2,7 +2,7 @@ import { useMutation, gql } from "@apollo/client"
 import { Mutation, MutationCreateBoardArgs } from "../../../src/commons/types/generated/types";
 import { useState } from "react";
 
-const 나의그래프큐엘셋팅 = gql`
+const CREATE_BOARD = gql`
     mutation createBoard($writer: String, $title: String, $contents: String){
         createBoard(writer: $writer, title: $title, contents: $contents){
             _id
@@ -15,11 +15,11 @@ const 나의그래프큐엘셋팅 = gql`
 export default function GraphqlMutationPage(){
     // const [counter, setCounter] = useState<number>(0)
 
-    // const [나의함수] = useMutation<결과타입, 변수타입>(나의그래프큐엘셋팅);
-    const [나의함수] = useMutation<Pick<Mutation, "createBoard">, MutationCreateBoardArgs>(나의그래프큐엘셋팅);
+    // const [createBoard] = useMutation<결과타입, 변수타입>(CREATE_BOARD);
+    const [ createBoard ] = useMutation<Pick<Mutation, "createBoard">, MutationCreateBoardArgs>(CREATE_BOARD);
 
     const onClickSubmit = async () => {
-        const result = await 나의함수({
+        const result = await createBoard({
             variables: {
                 writer: "훈이",
                 title: "안녕하세요!!",

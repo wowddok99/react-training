@@ -16,6 +16,10 @@ const FETCH_BOARD = gql`
 export default function DynamicRoutingBoardQueryMovedPage(){
     const router = useRouter();
 
+    // const { data } = useQuery<결과타입, 변수타입>(FETCH_BOARD,{
+    //     variables: { number: Number(router.query.qqq) }
+    // });
+    
     const { data } = useQuery<Pick<Query, "fetchBoard">, QueryFetchBoardArgs>(FETCH_BOARD,{
         variables: { number: Number(router.query.qqq) }
     });
