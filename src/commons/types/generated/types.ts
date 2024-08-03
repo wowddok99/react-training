@@ -15,7 +15,7 @@ export type Scalars = {
   Date: { input: any; output: any; }
 };
 
-export type IBoardReturn = {
+export type BoardReturn = {
   __typename?: 'BoardReturn';
   contents?: Maybe<Scalars['String']['output']>;
   createdAt?: Maybe<Scalars['Date']['output']>;
@@ -25,67 +25,67 @@ export type IBoardReturn = {
   writer?: Maybe<Scalars['String']['output']>;
 };
 
-export enum ICacheControlScope {
+export enum CacheControlScope {
   Private = 'PRIVATE',
   Public = 'PUBLIC'
 }
 
-export type ICreateProductInput = {
+export type CreateProductInput = {
   detail?: InputMaybe<Scalars['String']['input']>;
   name?: InputMaybe<Scalars['String']['input']>;
   price?: InputMaybe<Scalars['Int']['input']>;
 };
 
-export type IMutation = {
+export type Mutation = {
   __typename?: 'Mutation';
-  createBoard?: Maybe<IReturn>;
-  createProduct?: Maybe<IReturn>;
-  createProfile?: Maybe<IReturn>;
-  deleteBoard?: Maybe<IReturn>;
-  deleteProduct?: Maybe<IReturn>;
-  deleteProfile?: Maybe<IReturn>;
-  updateBoard?: Maybe<IReturn>;
-  updateProduct?: Maybe<IReturn>;
-  updateProfile?: Maybe<IReturn>;
+  createBoard?: Maybe<Return>;
+  createProduct?: Maybe<Return>;
+  createProfile?: Maybe<Return>;
+  deleteBoard?: Maybe<Return>;
+  deleteProduct?: Maybe<Return>;
+  deleteProfile?: Maybe<Return>;
+  updateBoard?: Maybe<Return>;
+  updateProduct?: Maybe<Return>;
+  updateProfile?: Maybe<Return>;
 };
 
 
-export type IMutationCreateBoardArgs = {
+export type MutationCreateBoardArgs = {
   contents?: InputMaybe<Scalars['String']['input']>;
   title?: InputMaybe<Scalars['String']['input']>;
   writer?: InputMaybe<Scalars['String']['input']>;
 };
 
 
-export type IMutationCreateProductArgs = {
-  createProductInput: ICreateProductInput;
+export type MutationCreateProductArgs = {
+  createProductInput: CreateProductInput;
   seller?: InputMaybe<Scalars['String']['input']>;
 };
 
 
-export type IMutationCreateProfileArgs = {
+export type MutationCreateProfileArgs = {
   age?: InputMaybe<Scalars['Int']['input']>;
   name?: InputMaybe<Scalars['String']['input']>;
   school?: InputMaybe<Scalars['String']['input']>;
 };
 
 
-export type IMutationDeleteBoardArgs = {
+export type MutationDeleteBoardArgs = {
   number?: InputMaybe<Scalars['Int']['input']>;
 };
 
 
-export type IMutationDeleteProductArgs = {
+export type MutationDeleteProductArgs = {
   productId?: InputMaybe<Scalars['ID']['input']>;
 };
 
 
-export type IMutationDeleteProfileArgs = {
+export type MutationDeleteProfileArgs = {
   name?: InputMaybe<Scalars['String']['input']>;
 };
 
 
-export type IMutationUpdateBoardArgs = {
+export type MutationUpdateBoardArgs = {
   contents?: InputMaybe<Scalars['String']['input']>;
   number?: InputMaybe<Scalars['Int']['input']>;
   title?: InputMaybe<Scalars['String']['input']>;
@@ -93,19 +93,19 @@ export type IMutationUpdateBoardArgs = {
 };
 
 
-export type IMutationUpdateProductArgs = {
+export type MutationUpdateProductArgs = {
   productId?: InputMaybe<Scalars['ID']['input']>;
-  updateProductInput: IUpdateProductInput;
+  updateProductInput: UpdateProductInput;
 };
 
 
-export type IMutationUpdateProfileArgs = {
+export type MutationUpdateProfileArgs = {
   age?: InputMaybe<Scalars['Int']['input']>;
   name?: InputMaybe<Scalars['String']['input']>;
   school?: InputMaybe<Scalars['String']['input']>;
 };
 
-export type IProductReturn = {
+export type ProductReturn = {
   __typename?: 'ProductReturn';
   _id?: Maybe<Scalars['ID']['output']>;
   createdAt?: Maybe<Scalars['Date']['output']>;
@@ -115,7 +115,7 @@ export type IProductReturn = {
   seller?: Maybe<Scalars['String']['output']>;
 };
 
-export type IProfileReturn = {
+export type ProfileReturn = {
   __typename?: 'ProfileReturn';
   age?: Maybe<Scalars['Int']['output']>;
   name?: Maybe<Scalars['String']['output']>;
@@ -123,57 +123,57 @@ export type IProfileReturn = {
   school?: Maybe<Scalars['String']['output']>;
 };
 
-export type IQuery = {
+export type Query = {
   __typename?: 'Query';
-  fetchBoard?: Maybe<IBoardReturn>;
-  fetchBoards?: Maybe<Array<IBoardReturn>>;
+  fetchBoard?: Maybe<BoardReturn>;
+  fetchBoards?: Maybe<Array<BoardReturn>>;
   fetchBoardsCount: Scalars['Int']['output'];
-  fetchProduct?: Maybe<IProductReturn>;
-  fetchProducts?: Maybe<Array<IProductReturn>>;
+  fetchProduct?: Maybe<ProductReturn>;
+  fetchProducts?: Maybe<Array<ProductReturn>>;
   fetchProductsCount: Scalars['Int']['output'];
-  fetchProfile?: Maybe<IProfileReturn>;
-  fetchProfiles?: Maybe<Array<IProfileReturn>>;
+  fetchProfile?: Maybe<ProfileReturn>;
+  fetchProfiles?: Maybe<Array<ProfileReturn>>;
   fetchProfilesCount: Scalars['Int']['output'];
 };
 
 
-export type IQueryFetchBoardArgs = {
+export type QueryFetchBoardArgs = {
   number?: InputMaybe<Scalars['Int']['input']>;
 };
 
 
-export type IQueryFetchBoardsArgs = {
+export type QueryFetchBoardsArgs = {
   page?: InputMaybe<Scalars['Int']['input']>;
 };
 
 
-export type IQueryFetchProductArgs = {
+export type QueryFetchProductArgs = {
   productId?: InputMaybe<Scalars['ID']['input']>;
 };
 
 
-export type IQueryFetchProductsArgs = {
+export type QueryFetchProductsArgs = {
   page?: InputMaybe<Scalars['Int']['input']>;
 };
 
 
-export type IQueryFetchProfileArgs = {
+export type QueryFetchProfileArgs = {
   name?: InputMaybe<Scalars['String']['input']>;
 };
 
 
-export type IQueryFetchProfilesArgs = {
+export type QueryFetchProfilesArgs = {
   page?: InputMaybe<Scalars['Int']['input']>;
 };
 
-export type IReturn = {
+export type Return = {
   __typename?: 'Return';
   _id?: Maybe<Scalars['String']['output']>;
   message?: Maybe<Scalars['String']['output']>;
   number?: Maybe<Scalars['Int']['output']>;
 };
 
-export type IUpdateProductInput = {
+export type UpdateProductInput = {
   detail?: InputMaybe<Scalars['String']['input']>;
   name?: InputMaybe<Scalars['String']['input']>;
   price?: InputMaybe<Scalars['Int']['input']>;
