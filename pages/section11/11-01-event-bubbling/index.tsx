@@ -1,4 +1,5 @@
 import { useQuery, gql } from '@apollo/client'
+import { MouseEvent } from 'react';
 
 const FETCH_BOARDS = gql`
     query{
@@ -12,6 +13,7 @@ const FETCH_BOARDS = gql`
 `
 
 interface fetchBoard{
+    number: string;
     contents: string;
     title: string;
     writer: string;
@@ -20,20 +22,38 @@ interface fetchBoard{
 export default function MapBoardsPage(){
     const { data } = useQuery(FETCH_BOARDS);
 
-    console.log(data?.fetchBoards)
-    // console.log(data?.fetchBoards.map(el => <div>{el.contents}</div>))
+    const onClickAlert = (event: MouseEvent<HTMLDivElement>) => {
+        // 바인딩 기준이 아닌, 클릭한 태그의 id를 기준으로 함
+        // if(event.target instanceof HTMLDivElement){
+        //     alert(event.target.id)
+        // }
+
+        // 바인딩된 부모의 id를 기준으로 함
+        // currentTarget은 태그일수 밖에 없기 때문에 instanceof 불필요
+        alert(event.currentTarget.id)
+    }
+
+    const onClickSpanAlert = () => {
+        alert("SpanAlert");
+    }
+
+    const onClickInputAlert = () => {
+        alert("InputAlert");
+    }
+
     return (
         <div>
             <div>
                 {data?.fetchBoards.map((el: fetchBoard) => (
-                <div style={{display: "flex", gap: "10px"}}>
-                    <span>
-                        <input type="checkbox"></input>
+                <div id={el.writer} onClick={onClickAlert} style={{display: "flex", gap: "10px"}}>
+                    <span onClick={onClickSpanAlert}>
+                        <input type="checkbox" onClick={onClickInputAlert}></input>
                     </span>
-                    <span>{el.contents}</span>
-                    <span>{el.title}</span>
-                    <span>{el.writer}</span>
-                </div>
+                    <span id={el.number}>{el.number}</span>
+                    <span id={el.title}>{el.title}</span>
+                    <span id={el.contents}>{el.contents}</span>
+                    <span id={el.writer}>{el.writer}</span>
+                </div> 
                 ))}
             </div>
         </div>
