@@ -22,15 +22,15 @@ interface fetchBoard{
 export default function MapBoardsPage(){
     const { data } = useQuery(FETCH_BOARDS);
 
-    const onClickAlert = (event: MouseEvent<HTMLDivElement>) => {
+    const onClickAlert = (event: MouseEvent) => {
         // 바인딩 기준이 아닌, 클릭한 태그의 id를 기준으로 함
-        // if(event.target instanceof HTMLDivElement){
-        //     alert(event.target.id)
-        // }
+        if(event.target instanceof HTMLDivElement || event.target instanceof HTMLInputElement || event.target instanceof HTMLSpanElement){
+            alert(event.target.id)
+        }
 
         // 바인딩된 부모의 id를 기준으로 함
         // currentTarget은 태그일수 밖에 없기 때문에 instanceof 불필요
-        alert(event.currentTarget.id)
+        // alert(event.currentTarget.id)
     }
 
     const onClickSpanAlert = () => {
@@ -58,4 +58,4 @@ export default function MapBoardsPage(){
             </div>
         </div>
     )
-    }
+}
