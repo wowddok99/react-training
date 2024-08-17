@@ -1,18 +1,19 @@
-import { useState } from "react";
+import React, { useState } from 'react';
 
-export default function testPage(){
-    const [state, setState] = useState(1);
+export default function Test(){
+    const [value, setValue] = useState("");
+    
+    // 1단계 방식
+    // const onChangeStar = (value:number) => {
+    //     setValue(value);
+    // }
 
-    const onClick = () => {
-        setState(state+4);
-        setState(state+2);
-        setState(state+3);
-    };
-
+    // 2단계 방식
+    const handleChange = (event) => {
+      console.log(event);
+    }
+    
     return (
-        <div className="App">
-          <button onClick={onClick}>+1</button>
-          <p>현재 값 {state}</p>
-        </div>
+        <input type="text" onChange={handleChange} value={value}/>
       );
 }
