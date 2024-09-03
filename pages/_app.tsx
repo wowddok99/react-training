@@ -1,6 +1,7 @@
 import { AppProps } from 'next/app';
 import '../styles/global.css';
 import { ApolloClient, InMemoryCache, ApolloProvider } from '@apollo/client';
+import LayOut from '../src/components/commons/layout';
 
 export default function App({ Component, pageProps }: AppProps) {
 
@@ -12,7 +13,9 @@ export default function App({ Component, pageProps }: AppProps) {
   return (
     <div>
       <ApolloProvider client={client}>
-        <Component {...pageProps} />
+        <LayOut>
+          <Component {...pageProps} />
+        </LayOut>
       </ApolloProvider>
     </div>
   )
