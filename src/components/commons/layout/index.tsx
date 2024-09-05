@@ -17,10 +17,7 @@ interface LayOutProps{
 
 export default function LayOut(props: LayOutProps){
     const router = useRouter();
-    console.log(router.asPath);
-
     const isHiddenHeader = HIDDEN_HEADERS.includes(router.asPath);
-    console.log(isHiddenHeader); // HIDDEN_HEADERS에 현재 주소가 포함되어 있으면 TRUE, 아니면 FALSE
 
     return (
         <div>
