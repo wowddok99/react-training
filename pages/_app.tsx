@@ -1,22 +1,17 @@
 import { AppProps } from 'next/app';
 import '../styles/global.css';
-import { ApolloClient, InMemoryCache, ApolloProvider } from '@apollo/client';
 import LayOut from '../src/components/commons/layout';
+import ApolloSetting from '../src/components/commons/apollo';
 
 export default function App({ Component, pageProps }: AppProps) {
 
-  const client = new ApolloClient({
-      uri: "http://backend-example.codebootcamp.co.kr/graphql",
-      cache: new InMemoryCache() // 컴퓨터의 메모리에다가 백엔드에서 받아온 데이터 임시로 저장함.
-  });
-
   return (
     <div>
-      <ApolloProvider client={client}>
+      <ApolloSetting>
         <LayOut>
-          <Component {...pageProps} />
-        </LayOut>
-      </ApolloProvider>
+            <Component {...pageProps} />
+          </LayOut>
+      </ApolloSetting>
     </div>
   )
 }
