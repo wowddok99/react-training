@@ -26,8 +26,8 @@ export default function LayOut(props: LayOutProps){
             <LayOutBanner/>
             <LayOutNavigation/>
             <div style={{ height: "500px", display: "flex", flexDirection:"row", gap: "10px" }}>
-                <div style={{ width: "30%", backgroundColor: "lightgray" }}>사이드바</div>
-                <div style={{ width: "70%", backgroundColor: "lightgoldenrodyellow" }}>{props.children}</div>
+                <div style={{ width: "10%", backgroundColor: "lightgray" }}>사이드바</div>
+                <div>{props.children}</div>
             </div>
             <LayOutFooter/>
         </div>
