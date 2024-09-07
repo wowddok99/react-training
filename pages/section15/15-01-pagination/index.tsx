@@ -1,4 +1,5 @@
 import { useQuery, gql } from '@apollo/client'
+import { MouseEvent } from 'react';
 
 const FETCH_BOARDS = gql`
 
@@ -25,18 +26,10 @@ export interface FetchBoardsData{
 }
 
 export default function MapBoardsPage(){
-    const { data, refetch} = useQuery<FetchBoardsData>(FETCH_BOARDS);
+    const { data, refetch } = useQuery<FetchBoardsData>(FETCH_BOARDS);
 
-    const onClickPage1 = (): void => {
-        refetch({ page: 1 });
-    }
-
-    const onClickPage2 = (): void => {
-        refetch({ page: 2 });
-    }
-
-    const onClickPage3 = (): void => {
-        refetch({ page: 3 });
+    const onClickPage = (event: MouseEvent<HTMLSpanElement>): void => {
+        void refetch({ page: Number(event.currentTarget.id) });
     }
 
     return (
@@ -49,9 +42,21 @@ export default function MapBoardsPage(){
                 </div>
                 ))}
                 <div style={{display:'flex', gap:'10px'}}>
-                    <span style={{cursor:'pointer'}} onClick={onClickPage1}>1</span>
-                    <span style={{cursor:'pointer'}} onClick={onClickPage2}>2</span>
-                    <span style={{cursor:'pointer'}} onClick={onClickPage3}>3</span>
+                    {new Array(10).fill(1).map((_, index) => (
+                        <span key={index + 1} id={String(index + 1)} style={{cursor:'pointer'}} onClick={onClickPage}>
+                            {index + 1}
+                        </span>
+                    ))}
+                    {/* {[1,1,1,1,1,1,1,1,1,1].map((_, index) => (
+                        <span key={index + 1} id={String(index + 1)} style={{cursor:'pointer'}} onClick={onClickPage}>
+                            {index + 1}
+                        </span>
+                    ))} */}
+                    {/* {[1,2,3,4,5,6,7,8,9,10].map((el, index) => (
+                        <span key={el} id={String(el)} style={{cursor:'pointer'}} onClick={onClickPage}>
+                            {el}
+                        </span>
+                    ))} */}
                 </div>
             </div>
         </div>
