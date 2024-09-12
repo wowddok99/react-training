@@ -9,10 +9,10 @@ export default function CounterStatePage(){
         setCount((prev: number) => prev + 1)
     }
 
-return (
-    <div>
-        <Child1 count={count} setCount={setCount}/>
-        <Child2 count={count} onClickCountUp={onClickCountUp}/>
-    </div>
-)
+    return (
+        <div>
+            <Child1 count={count} setCount={setCount}/>
+            <Child2 count={count} onClickCountUp={onClickCountUp}/>
+        </div>
+    )
 }
