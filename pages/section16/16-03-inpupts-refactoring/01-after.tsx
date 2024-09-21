@@ -29,19 +29,19 @@ export default function GraphqlMutationPage(){
         console.log(result);
     }
 
-    // const onChangeInputs = (event: ChangeEvent<HTMLInputElement>) => {
-    //     setInputs({
-    //         ...inputs,
-    //         [event.target.id]: event.target.value
-    //     })
-    // }
-
     const onChangeInputs = (event: ChangeEvent<HTMLInputElement>) => {
-        setInputs((prev) => ({
-            ...prev,
+        setInputs({
+            ...inputs,
             [event.target.id]: event.target.value
-        }))
+        })
     }
+
+    // const onChangeInputs = (event: ChangeEvent<HTMLInputElement>) => {
+    //     setInputs((prev) => ({
+    //         ...prev,
+    //         [event.target.id]: event.target.value
+    //     }))
+    // }
     
     // 한 줄일때는 괄호 불필요
     return(
