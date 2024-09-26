@@ -1,10 +1,15 @@
 import { ApolloClient, ApolloProvider, InMemoryCache } from "@apollo/client";
+import { createUploadLink } from 'apollo-upload-client'
 
 interface ApolloSettingProps {
     children: JSX.Element
 }
 
 export default function ApolloSetting(props: ApolloSettingProps){
+    const uploadLink = createUploadLink({
+        uri: "http://backend-practice.codebootcamp.co.kr/graphql"
+    })
+
     const exampleUrl = "http://backend-example.codebootcamp.co.kr/graphql";
     const portfolioUrl = "http://backend-practice.codebootcamp.co.kr/graphql";
 
