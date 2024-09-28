@@ -13,6 +13,7 @@
     "@apollo/client": "^3.10.6",
     "@emotion/react": "^11.11.4",
     "@emotion/styled": "^11.11.5",
+    "@react-icons/all-files": "^4.1.0",
     "@types/react-infinite-scroller": "^1.2.5",
     "antd": "^5.20.1",
     "apollo-upload-client": "^17.0.0",
