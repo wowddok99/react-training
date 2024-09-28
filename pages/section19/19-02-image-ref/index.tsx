@@ -17,12 +17,14 @@ interface UploadFile {
  
 export default function ImageUploadPage(){
     const [imageUrl, setImageUrl] = useState<string|undefined>("");
+    const [fileName, setFileName] = useState<string|undefined>("")
+
     const [uploadFile] = useMutation<UploadFile>(UPLOAD_FILE)
     const fileRef = useRef<HTMLInputElement>(null);
 
     const onChangeFile = async (event: ChangeEvent<HTMLInputElement>): Promise<void> => {
         const file = event.target.files?.[0] // 배열로 들어오는 이유: <input type="file" multiple /> 일 때, 여러개 드래그 가능
-        console.log(file)
+        setFileName(file?.name)
 
         const result = await uploadFile({ variables: { file: file } })
         setImageUrl(result.data?.uploadFile.url)
@@ -34,7 +36,10 @@ export default function ImageUploadPage(){
 
     return (
         <div>
-            <RiImageAddLine style={{ width: "40px", height: "40px", cursor: "pointer"}} onClick={onClickImage}>이미지선택</RiImageAddLine>
+            <div style={{ display: "flex", gap: "5px", alignItems: "center"}}>
+                <RiImageAddLine style={{ width: "30px", height: "30px", cursor: "pointer"}} onClick={onClickImage}>이미지선택</RiImageAddLine>
+                <div style={{fontSize: "14px"}}>{fileName}</div>
+            </div>
             <div>
                 <input type ="file" onChange={onChangeFile} multiple={true} style={{ display: 'none' }} ref={fileRef} />
                 <img src={`https://storage.googleapis.com/${imageUrl}`} style={{ display: imageUrl ? 'block' : 'none'}} />
