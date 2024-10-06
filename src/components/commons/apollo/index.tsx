@@ -1,6 +1,9 @@
 import { ApolloClient, ApolloLink, ApolloProvider, InMemoryCache } from "@apollo/client";
 import { createUploadLink } from 'apollo-upload-client'
 
+// 함수 밖으로 분리하였으므로 페이지 이동시 리렌더링 x 
+const GLOBAL_STATE = new InMemoryCache
+
 interface ApolloSettingProps {
     children: JSX.Element
 }
@@ -15,7 +18,8 @@ export default function ApolloSetting(props: ApolloSettingProps){
 
     const client = new ApolloClient({
         link: ApolloLink.from([uploadLink]),
-        cache: new InMemoryCache() // 컴퓨터의 메모리에다가 백엔드에서 받아온 데이터 임시로 저장함.
+        // 페이지 이동시에는 new로 새로 생성함.
+        cache: GLOBAL_STATE // apollo cache state -> useQuery의 결과를 여기 저장함
     });
 
     return (
